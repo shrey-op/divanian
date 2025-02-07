@@ -80,7 +80,7 @@
         <h1>Download Divanian</h1>
         <p class="description">Stay connected with your school friends with the latest version of Divanian.</p>
         <a href="https://yourdownloadlink.com/Divanian - A Social App_3_1.2.apk" download>
-  <button>Download Divanian</button>
+  <button class="download-btn">Download Divanian</button>
 </a>
     </div>
 
@@ -99,16 +99,7 @@
         firebase.initializeApp(firebaseConfig);
         const storage = firebase.storage();
 
-        document.getElementById('downloadBtn').addEventListener('click', async () => {
-            try {
-                const apkRef = storage.ref('\Divanian\public\Divanian - A Social App_3_1.2.apk'); // Ensure this path is correct
-                const url = await apkRef.getDownloadURL();
-                window.location.href = url;
-            } catch (error) {
-                alert('Error fetching the download link. Please try again later.');
-                console.error(error);
-            }
-        });
+        
     </script>
 </body>
 
