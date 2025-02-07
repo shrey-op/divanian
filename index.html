@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Divanian</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            text-align: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            font-size: 22px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            text-align: center;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin-top: 80px;
+        }
+
+        .container {
+            margin-top: 20px;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .description {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .download-btn {
+            background: #222;
+            color: white;
+            padding: 15px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        .download-btn:hover {
+            background: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">Divanian - Stay Connected</div>
+    <img src="logo.png" alt="Divanian Logo" class="logo">
+    <div class="container">
+        <h1>Download Divanian</h1>
+        <p class="description">Stay connected with your school friends with the latest version of Divanian.</p>
+        <button id="downloadBtn" class="download-btn">Download Latest Version</button>
+    </div>
+
+    <script>
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAtbpH2aYW4qJdTJbTliQcnd1FIWv3NCD8",
+            authDomain: "divanian-78f62.firebaseapp.com",
+            projectId: "divanian-78f62",
+            storageBucket: "divanian-78f62.firebasestorage.app",
+            messagingSenderId: "347437871116",
+            appId: "1:347437871116:web:5ca623e02e7d5f02633e29",
+            measurementId: "G-1WDNWVMBMY"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const storage = firebase.storage();
+
+        document.getElementById('downloadBtn').addEventListener('click', async () => {
+            try {
+                const apkRef = storage.ref('\Divanian\public\Divanian - A Social App_3_1.2.apk'); // Ensure this path is correct
+                const url = await apkRef.getDownloadURL();
+                window.location.href = url;
+            } catch (error) {
+                alert('Error fetching the download link. Please try again later.');
+                console.error(error);
+            }
+        });
+    </script>
+</body>
+
+</html>
