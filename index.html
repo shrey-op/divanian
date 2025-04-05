@@ -4,17 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
-    <script>
-        window.onload = function() {
-            console.log("Redirect will happen in 7 seconds...");
-            setTimeout(function() {
-                console.log("Redirecting now...");
-                window.location.href = "https://43.204.221.9";
-            }, 7000); // 7 seconds delay
-        };
-    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .countdown {
+            font-weight: bold;
+            color: #ff6600;
+        }
+    </style>
 </head>
 <body>
-    <p>You will be redirected in 7 seconds.sefmsefsekjfisejifjsijfjsiljfilsjiejsle If not, <a href="https://43.204.221.9">click here</a>.</p>
+    <h1>Loading... <span class="countdown">7</span> seconds remaining</h1>
+    <p>If you are not redirected, <a href="https://43.204.221.9">click here</a>.</p>
+
+    <script>
+        let seconds = 7;
+        const countdownEl = document.querySelector('.countdown');
+
+        const countdown = setInterval(() => {
+            seconds--;
+            countdownEl.textContent = seconds;
+            if (seconds <= 0) {
+                clearInterval(countdown);
+                window.location.href = "https://43.204.221.9";
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
